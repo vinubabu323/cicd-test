@@ -19,4 +19,7 @@ jobs:
           else
             echo "File does not exist."
             echo "::set-output name=file_exists::false"
+            exit 0
           fi
+      - name: test
+        run: echo "failed"
