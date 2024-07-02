@@ -10,19 +10,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Check if file exists
-        id: check_file
-        run: |
-          if [ -f "../../index.js" ]; then
-            echo "File exists."
-            echo "::set-output name=file_exists::true"
-          else
-            echo "File does not exist."
-            echo "::set-output name=file_exists::false"
-            exit 1
-          fi
-      - name: test
-        run: echo "failed"
-
       - name: Run tests
         run: npm test
