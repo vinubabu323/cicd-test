@@ -13,7 +13,7 @@ jobs:
       - name: Check if file exists
         id: check_file
         run: |
-          if [ -f "../../server.js" ]; then
+          if [ -f "../../index.js" ]; then
             echo "File exists."
             echo "::set-output name=file_exists::true"
           else
@@ -23,3 +23,6 @@ jobs:
           fi
       - name: test
         run: echo "failed"
+
+      - name: Run tests
+        run: npm test
