@@ -1,15 +1,31 @@
-name: Github-CI
-run-name: Continuous Integration Test1
-on: [push]
+name: Deploy
+
+on:
+  push:
+    branches: [main]
 
 jobs:
-  Run-tests:
+  Deploy:
+    name: Deploy to EC2
     runs-on: ubuntu-latest
-    environment: test
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - run: npm ci
+      - uses: actions/checkout@v2
+      - name: Build & Deploy
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOSTNAME: ${{secrets.SSH_HOST}}
+          USER_NAME: ${{secrets.USER_NAME}}
+
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -i private_key ${USER_NAME}@${HOSTNAME} '
+
+              cd /home/ubuntu/webapp &&
+              git checkout main &&
+              git fetch --all &&
+              git reset --hard origin/main &&
+              git pull origin main &&
+              sudo npm i &&
+              sudo pm2 start index.js
+              '
