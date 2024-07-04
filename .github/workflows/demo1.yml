@@ -26,6 +26,6 @@ jobs:
               git checkout main &&
               git fetch --all &&
               git pull origin main &&
-              sudo npm install &&
-              sudo pm2 start index.js
+              npm install &&
+              pm2 start index.js
               '
