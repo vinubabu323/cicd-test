@@ -8,9 +8,9 @@ jobs:
   Deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
-    enviornment: test
 
     steps:
+      - enviornment: test
       - uses: actions/checkout@v2
       - name: Build & Deploy
         env:
