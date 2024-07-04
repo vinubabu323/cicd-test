@@ -19,13 +19,13 @@ jobs:
 
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -i private_key ${USER_NAME}@${HOSTNAME} '
+          ssh -i private_key "${USER_NAME}@${HOSTNAME}" '
 
               cd /home/ubuntu/webapp &&
               git checkout main &&
               git fetch --all &&
               git reset --hard origin/main &&
               git pull origin main &&
-              sudo npm i &&
+              sudo npm install &&
               sudo pm2 start index.js
               '
