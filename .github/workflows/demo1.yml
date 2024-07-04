@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - enviornment: test
       - uses: actions/checkout@v2
       - name: Build & Deploy
         env:
