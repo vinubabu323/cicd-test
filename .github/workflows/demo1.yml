@@ -8,11 +8,11 @@ jobs:
   Deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
+    enviornment: test
 
     steps:
       - uses: actions/checkout@v2
       - name: Build & Deploy
-        enviornment: test
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           HOSTNAME: ${{secrets.SSH_HOST}}
