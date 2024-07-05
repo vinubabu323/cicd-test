@@ -5,7 +5,7 @@ const User = require("../model/User");
 // Create a new user
 router.get("/", async (req, res) => {
   try {
-    res.status(200).send({ message: "Success !" });
+    res.status(200).send({ message: "Success" });
   } catch (error) {
     res.status(400).send(error);
   }
