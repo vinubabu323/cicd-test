@@ -26,5 +26,5 @@ jobs:
               git fetch --all &&
               git pull origin main &&
               npm install &&
-              bash ./pm2_runner.sh
+              bash "./pm2_runner.sh"
               '
