@@ -26,5 +26,5 @@ jobs:
               git fetch --all &&
               git pull origin main &&
               npm install &&
-              pm2 start index.js
+              bash ./pm2_runner.sh
               '
